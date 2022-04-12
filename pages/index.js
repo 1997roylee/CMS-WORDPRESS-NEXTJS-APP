@@ -9,21 +9,16 @@ import { Box } from "@chakra-ui/react";
 import factory from "../src/utils/factory";
 
 export default function Index({ blocks, preview }) {
-  // const { data, loading, error } = useQuery(QUERY_POSTS);
   console.log(blocks);
-
   return (
     <>
       <Layout preview={preview}>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        <Container>
-          <Intro />
-         <Box>
-         {factory(blocks)}
-         </Box>
-        </Container>
+        <Box>
+          {factory(blocks)}
+        </Box>
       </Layout>
     </>
   );

@@ -16,6 +16,7 @@
 		"wpackagist-plugin/advanced-custom-fields": "5.9.1",
 		"yoast/wordpress-seo": "^18.1",
 		"ashhitch/wp-graphql-yoast-seo": "^4.5",
-		"valu/wp-graphql-offset-pagination": "^0.2"
+		"valu/wp-graphql-offset-pagination": "^0.2",
+		"godaddy-wordpress/coblocks": "2.22.10"
 	}
 }

@@ -1,7 +1,10 @@
 import { Box } from "@chakra-ui/react"
 
-const Column = () => {
-    return <Box></Box>
+const Column = (props) => {
+    const {children} = props;
+    return <Box w='full'>
+        {children}
+    </Box>
 }
 
 export default Column;

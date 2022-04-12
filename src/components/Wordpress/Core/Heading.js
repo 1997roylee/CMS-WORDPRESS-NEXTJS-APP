@@ -1,9 +1,15 @@
 import { Text } from "@chakra-ui/react";
 
 const Heading = (props) => {
-  const { content, ...rest } = props;
+  const { content, align, level, ...rest } = props;
+  console.log(rest);
+
+  const as = level && `h${level}` || "h6"
+  const fontSize = level && `${6 - level}xl` || "xl"
+  console.log(fontSize, content, level);
+
   return (
-    <Text as="h1" fontSize="6xl" {...rest}>
+    <Text as={as} fontSize={fontSize} textAlign={align} {...rest}>
       {content}
     </Text>
   );

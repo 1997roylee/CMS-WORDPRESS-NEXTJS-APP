@@ -1,22 +1,26 @@
 // src/utils/factory.js
 import html2React from "./html2React";
 
-export default function factory(blocks = []) {
-  if (Array.isArray(blocks) === false) return <></>;
 
-  const mapInnerBlocks = (innerBlock, innerBlockIndex) => {
-    const key = `Inner_Block_${innerBlockIndex.name}_${innerBlockIndex}`;
-    return html2React(innerBlock)({ key });
-  };
+
+function createFactory(blocks, options) {
+  const { parentIndex } = options;
 
   return blocks.map((block, blockIndex) => {
-    const key = `Block_${blockIndex}`;
+    const key = `Block_${parentIndex || 0}_${blockIndex}_${block.name}`;
     let children = [];
 
     if (block.innerBlocks.length > 0)
-      children = block.innerBlocks.map(mapInnerBlocks);
+      children = createFactory(block.innerBlocks, { parentIndex: blockIndex });
 
-    console.log(children, block.name);
+    // console.log(children, block.name);
     return html2React(block)({ children, key });
   });
+}
+
+
+export default function factory(blocks = []) {
+  if (Array.isArray(blocks) === false) return [];
+
+  return createFactory(blocks, { parentIndex: 0 });
 }
