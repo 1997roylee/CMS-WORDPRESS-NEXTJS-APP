@@ -1,15 +1,16 @@
-import Head from 'next/head'
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import { getAllPostsForHome } from '../lib/api'
-import { CMS_NAME } from '../lib/constants'
+import Head from "next/head";
+import Container from "../components/container";
+import Intro from "../components/intro";
+import Layout from "../components/layout";
+import { CMS_NAME } from "../src/lib/constants";
+import client from "../src/apollo/client";
+import { GET_PAGE } from "../src/queries/pages/get-page";
+import { Box } from "@chakra-ui/react";
+import factory from "../src/utils/factory";
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node
-  const morePosts = edges.slice(1)
+export default function Index({ blocks, preview }) {
+  // const { data, loading, error } = useQuery(QUERY_POSTS);
+  console.log(blocks);
 
   return (
     <>
@@ -19,27 +20,30 @@ export default function Index({ allPosts: { edges }, preview }) {
         </Head>
         <Container>
           <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.featuredImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+         <Box>
+         {factory(blocks)}
+         </Box>
         </Container>
       </Layout>
     </>
-  )
+  );
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview)
+  const { data } = await client.query({
+    query: GET_PAGE,
+    variables: {
+      uri: "/",
+    },
+  });
+
+  const {
+    page: { blocksJSON },
+  } = data;
+
+  const blocks = JSON.parse(blocksJSON);
 
   return {
-    props: { allPosts, preview },
-  }
+    props: { blocks, preview },
+  };
 }
