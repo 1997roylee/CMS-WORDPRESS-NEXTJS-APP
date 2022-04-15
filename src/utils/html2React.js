@@ -14,6 +14,7 @@ export default function html2React(block) {
     import(`../components/Wordpress/${name}`)
   );
 
+  // eslint-disable-next-line react/display-name
   return ({ children, key, id }) => {
     if (WrapperComponent) {
       const attributes = {
