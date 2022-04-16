@@ -1,13 +1,15 @@
-import { Container, HStack } from "@chakra-ui/react";
+import { Box, Container, HStack } from "@chakra-ui/react";
 
 const Features = (props) => {
     const { children } = props;
     // console.log(props);
-    return <Container maxW="6xl">
+    return <Box w='full'>
+        <Container maxW="6xl" mx='auto'>
         <HStack>
             {children}
         </HStack>
     </Container>
+    </Box>
 }
 
 export default Features;

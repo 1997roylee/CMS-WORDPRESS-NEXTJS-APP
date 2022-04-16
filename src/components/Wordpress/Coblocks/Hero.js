@@ -8,11 +8,12 @@ const Hero = ({ contentAlign, height, children }) => {
   });
   const Description = cloneElement(getChildByType("Core/Paragraph", children), {
     align: contentAlign,
+    maxWidth: '520px'
   });
   const Buttons = cloneElement(getChildByType("Core/Buttons", children), {
     align: contentAlign,
   })
-  return <Stack justify='center' align='center' h={height} px={4}>{Title}{Description}{Buttons}</Stack>;
+  return <Stack spacing={8} justify='center' align='center' h={height} px={4}>{Title}{Description}{Buttons}</Stack>;
 };
 
 export default Hero;
