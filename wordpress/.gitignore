@@ -1,0 +1,4 @@
+mysql
+wordpress
+!wordpress/composer.json
+!wordpress/composer.lock

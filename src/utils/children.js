@@ -1,6 +1,6 @@
 import React from "react";
 
-export const getChildrenByType = (type, children) => {
+export const findChildrenByType = (type, children) => {
   return React.Children.toArray(children).filter(
     (child) => {
       // console.log("getChild", child)
@@ -9,8 +9,8 @@ export const getChildrenByType = (type, children) => {
   );
 };
 
-export const getChildByType = (type, children) => {
-  return getChildrenByType(type, children)[0];
+export const findOneChildByType = (type, children) => {
+  return findChildrenByType(type, children)[0];
 }
 
 export const cloneElement = (element, props) => {
