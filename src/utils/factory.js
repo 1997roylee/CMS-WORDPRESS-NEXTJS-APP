@@ -13,7 +13,6 @@ function createFactory(blocks, options) {
     if (block.innerBlocks.length > 0)
       children = createFactory(block.innerBlocks, { parentIndex: blockIndex });
 
-    // console.log(children, block.name);
     return html2React(block)({ children, key });
   });
 }

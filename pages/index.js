@@ -9,8 +9,6 @@ import { Stack, VStack } from '@chakra-ui/react';
 import factory from '../src/utils/factory';
 
 export default function Index({ blocks, preview }) {
-    console.log(blocks);
-
     return (
         <>
             <Layout preview={preview}>

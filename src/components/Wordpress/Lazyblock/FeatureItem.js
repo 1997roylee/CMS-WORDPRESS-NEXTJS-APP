@@ -1,16 +1,13 @@
-import { Heading, Image, Stack, Text } from '@chakra-ui/react';
-import decodeImage from '../../../utils/decodeImage';
+import { Text, Heading, VStack, Image } from '@chakra-ui/react';
 
 const FeatureItem = (props) => {
-    const { title, description } = props;
-    const image = decodeImage(props['logo']);
-  
+    const { title, body, icon } = props;
     return (
-        <Stack>
-            <Image src={image.url} alt={image.alt} />
+        <VStack>
+            <Image src="" alt="" />
             <Heading>{title}</Heading>
-            <Text>{description}</Text>
-        </Stack>
+            <Text>{body}</Text>
+        </VStack>
     );
 };
 

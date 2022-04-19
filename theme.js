@@ -2,8 +2,8 @@ import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
     fonts: {
-        heading: 'Helvetica Neue, Inter, Open Sans, sans-serif',
-        body: 'Helvetica Neue, Inter, Open Sans, sans-serif',
+        heading: 'Plus Jakarta Sans, Open Sans, sans-serif',
+        body: 'Plus Jakarta Sans, Open Sans, sans-serif',
     },
     components: {
         Container: {
@@ -11,10 +11,13 @@ const theme = extendTheme({
                 md: {
                     maxW: '4xl',
                 },
+                lg: {
+                    maxW: '6xl',
+                },
             },
             defaultProps: {
-              size: 'md',
-            }
+                size: 'md',
+            },
         },
     },
 });

@@ -13,7 +13,6 @@ const getMaxWidthByAlign = (align) => {
 }
 
 const Img = ({ url, alt, align, ...rest }) => {
-    console.log(rest);
 
     const maxWidth = getMaxWidthByAlign(align);
     return <Image w='100%' src={url} alt={alt} maxWidth={maxWidth} />

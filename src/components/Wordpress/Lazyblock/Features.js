@@ -1,13 +1,15 @@
-import { Container, HStack, SimpleGrid } from '@chakra-ui/react';
+import { Container, Heading, VStack } from "@chakra-ui/react";
 
 const Features = (props) => {
-    // console.log(props)
-    const { children } = props;
-    return (
-        <Container mx='auto'>
-            <SimpleGrid columns={children.length}>{children}</SimpleGrid>
-        </Container>
-    );
-};
+    const { headline, children } = props;
+    return <Container maxW={'6xl'} mx='auto'>
+        <VStack spacing={8}>
+            <Heading align='center' whiteSpace={'pre-line'}>
+                {headline}
+            </Heading>
+            {children}
+        </VStack>
+    </Container>
+}
 
 export default Features;
