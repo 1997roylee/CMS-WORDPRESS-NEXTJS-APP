@@ -10,9 +10,9 @@ const CustomerStories = (props) => {
     const columnList = React.Children.toArray(columns.props.children);
 
     return (
-        <Container size='lg'>
-            <Stack spacing={8} pb={32}>
-                <Heading align="center">{headline}</Heading>
+        <Container size='lg' pb={{ md: 20, base: 10 }} mb={{ md: 10, base: 5 }} overflow={{base: 'hidden', md: 'visible'}}>
+            <Stack spacing={8}>
+                <Heading pb={8} whiteSpace={'pre-line'} align="center">{headline}</Heading>
                 <Carousel>
                     {columnList.map((column, index) => (
                         // eslint-disable-next-line react/jsx-key

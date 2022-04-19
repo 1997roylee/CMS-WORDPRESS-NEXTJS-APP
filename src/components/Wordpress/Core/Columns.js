@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 
 const Columns = (props) => {
-    // console.log("columns", props);
+
     const {children} = props;
-        return <Flex>
+        return <Flex flexDirection={{ base: 'column', md: 'row' }}>
             {children}
         </Flex>
 }

@@ -8,14 +8,14 @@ const Carousel = (props) => {
     const slides = findChildrenByType('CarouselSlide', children);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // useEffect(() => {
-    //     const handler = setInterval(() => {
-    //         slideTo(currentIndex + 1);
-    //     }, 3000);
-    //     return () => {
-    //         clearInterval(handler);
-    //     };
-    // }, [currentIndex, slideTo, slides.length]);
+    useEffect(() => {
+        const handler = setInterval(() => {
+            slideTo(currentIndex + 1);
+        }, 3000);
+        return () => {
+            clearInterval(handler);
+        };
+    }, [currentIndex, slideTo, slides.length]);
 
     const translateX = useMemo(
         () => `${25 - currentIndex * 50}%`,
@@ -36,12 +36,12 @@ const Carousel = (props) => {
             if (index < 0) {
                 setCurrentIndex(slides.length - 1);
             } else if (index > slides.length - 1) {
-                setCurrentIndex(currentIndex - 1);
+                setCurrentIndex(0);
             } else {
                 setCurrentIndex(index);
             }
         },
-        [currentIndex, slides.length]
+        [slides.length]
     );
 
     const handleSlideToPrev = () => {
@@ -57,6 +57,7 @@ const Carousel = (props) => {
             w="100%"
             flexWrap={'nowrap'}
             position="relative"
+           
             style={{
                 marginLeft: '-24px',
                 marginRight: '-24px',
@@ -65,6 +66,7 @@ const Carousel = (props) => {
             <Flex
                 w="100%"
                 flexWrap={'nowrap'}
+                
                 style={{
                     // marginLeft: '-24px',
                     // marginRight: '-24px',

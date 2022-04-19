@@ -1,20 +1,15 @@
-import Head from 'next/head';
-import Container from '../components/container';
-import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { CMS_NAME } from '../src/lib/constants';
 import client from '../src/apollo/client';
 import { GET_PAGE } from '../src/queries/pages/get-page';
-import { Stack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import factory from '../src/utils/factory';
+import SEOMeta from '../src/components/SeoMeta';
 
-export default function Index({ blocks, preview }) {
+export default function Index({ seo, blocks, preview }) {
     return (
         <>
+            <SEOMeta seo={seo} />
             <Layout preview={preview}>
-                <Head>
-                    <title>Next.js Blog Example with {CMS_NAME}</title>
-                </Head>
                 <VStack spacing={8}>{factory(blocks)}</VStack>
             </Layout>
         </>
@@ -30,12 +25,14 @@ export async function getStaticProps({ preview = false }) {
     });
 
     const {
-        page: { blocksJSON },
+        page: { blocksJSON, seo },
     } = data;
+
+    console.log(seo);
 
     const blocks = JSON.parse(blocksJSON);
 
     return {
-        props: { blocks, preview },
+        props: { blocks, seo, preview },
     };
 }

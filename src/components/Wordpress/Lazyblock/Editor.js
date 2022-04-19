@@ -1,7 +1,7 @@
 import * as React from "react"
 
-const Editor = (props) => (
-    <svg
+const Editor = (props) => {
+    return <svg
         width={1125}
         height={709}
         fill="none"
@@ -194,6 +194,6 @@ const Editor = (props) => (
             </filter>
         </defs>
     </svg>
-)
+}
 
 export default Editor
