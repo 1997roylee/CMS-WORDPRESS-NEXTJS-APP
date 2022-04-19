@@ -6,6 +6,7 @@ import factory from '../src/utils/factory';
 import SEOMeta from '../src/components/SeoMeta';
 
 export default function Index({ seo, blocks, preview }) {
+    console.info(blocks);
     return (
         <>
             <SEOMeta seo={seo} />

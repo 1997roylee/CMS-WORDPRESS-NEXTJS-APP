@@ -7,7 +7,7 @@ const FeatureItem = (props) => {
     const image = decodeImage(icon);
     return (
         <VStack mb={{ base: 8, md: 0 }}>
-            <Image src={image.url} alt={image.alt} />
+            <Image w={12} src={image.url} alt={image.alt} />
             <Heading align='center'>{title}</Heading>
             <Text align='center'>{body}</Text>
         </VStack>
