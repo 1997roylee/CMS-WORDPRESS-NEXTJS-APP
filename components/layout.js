@@ -1,5 +1,5 @@
 // import Alert from '../components/alert'
-import Footer from '../src/components/footer'
+import Footer from '../src/components/Footer'
 import Meta from '../components/meta'
 import Header from '../src/components/Header/Header'
 
