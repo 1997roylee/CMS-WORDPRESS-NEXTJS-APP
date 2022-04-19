@@ -17,13 +17,15 @@ export default function Index({ seo, blocks, preview }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-    const { data } = await client.query({
+    const result = await client.query({
         query: GET_PAGE,
         variables: {
             uri: '/',
         },
     });
 
+    const {data} = result;
+    console.log(data, result);
     const {
         page: { blocksJSON, seo },
     } = data;

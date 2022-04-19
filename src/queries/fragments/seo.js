@@ -12,7 +12,6 @@ fragment SeoFragment on PostTypeSEO {
       opengraphAuthor
       opengraphDescription
       opengraphTitle
-      schemaDetails
       opengraphImage {
         sourceUrl
       }
