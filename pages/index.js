@@ -16,7 +16,7 @@ export default function Index({ seo, blocks, preview }) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getServerSideProps({ preview = false }) {
     const result = await client.query({
         query: GET_PAGE,
         variables: {
@@ -24,7 +24,7 @@ export async function getStaticProps({ preview = false }) {
         },
     });
 
-    const {data} = result;
+    const { data } = result;
     console.log(data, result);
     const {
         page: { blocksJSON, seo },
@@ -38,3 +38,26 @@ export async function getStaticProps({ preview = false }) {
         props: { blocks, seo, preview },
     };
 }
+
+// export async function getStaticProps({ preview = false }) {
+//     const result = await client.query({
+//         query: GET_PAGE,
+//         variables: {
+//             uri: '/',
+//         },
+//     });
+
+//     const { data } = result;
+//     console.log(data, result);
+//     const {
+//         page: { blocksJSON, seo },
+//     } = data;
+
+//     console.log(seo);
+
+//     const blocks = JSON.parse(blocksJSON);
+
+//     return {
+//         props: { blocks, seo, preview },
+//     };
+// }
