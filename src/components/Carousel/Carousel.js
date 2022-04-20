@@ -8,6 +8,21 @@ const Carousel = (props) => {
     const slides = findChildrenByType('CarouselSlide', children);
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    const slideTo = useCallback(
+        (index) => {
+            console.log(index);
+            if (index < 0) {
+                setCurrentIndex(slides.length - 1);
+            } else if (index > slides.length - 1) {
+                setCurrentIndex(0);
+            } else {
+                setCurrentIndex(index);
+            }
+        },
+        [slides.length]
+    );
+
+    
     useEffect(() => {
         const handler = setInterval(() => {
             slideTo(currentIndex + 1);
@@ -30,20 +45,7 @@ const Carousel = (props) => {
             })
         );
 
-    const slideTo = useCallback(
-        (index) => {
-            console.log(index);
-            if (index < 0) {
-                setCurrentIndex(slides.length - 1);
-            } else if (index > slides.length - 1) {
-                setCurrentIndex(0);
-            } else {
-                setCurrentIndex(index);
-            }
-        },
-        [slides.length]
-    );
-
+    
     const handleSlideToPrev = () => {
         slideTo(currentIndex - 1);
     };

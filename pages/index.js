@@ -4,20 +4,26 @@ import { GET_PAGE } from '../src/queries/pages/get-page';
 import { VStack } from '@chakra-ui/react';
 import factory from '../src/utils/factory';
 import SEOMeta from '../src/components/SeoMeta';
+import { preloadLazyBlockComponents } from '../src/components/Wordpress';
 
-export default function Index({ seo, blocks, preview }) {
-    console.info(blocks);
+const Components = preloadLazyBlockComponents();
+
+export default function Index({ DynamicLazyComponenth, seo, blocks, preview }) {
     return (
         <>
             <SEOMeta seo={seo} />
             <Layout preview={preview}>
-                <VStack spacing={8}>{factory(blocks)}</VStack>
+                <VStack spacing={8}>{factory(blocks, Components)}</VStack>
             </Layout>
         </>
     );
 }
 
-export async function getServerSideProps({ preview = false }) {
+export async function getServerSideProps({ req, res, preview = false }) {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
     const result = await client.query({
         query: GET_PAGE,
         variables: {
@@ -26,39 +32,16 @@ export async function getServerSideProps({ preview = false }) {
     });
 
     const { data } = result;
-    console.log(data, result);
+
     const {
         page: { blocksJSON, seo },
     } = data;
 
-    console.log(seo);
-
     const blocks = JSON.parse(blocksJSON);
+
+    // const blocksFactory = factory(blocks)
 
     return {
         props: { blocks, seo, preview },
     };
 }
-
-// export async function getStaticProps({ preview = false }) {
-//     const result = await client.query({
-//         query: GET_PAGE,
-//         variables: {
-//             uri: '/',
-//         },
-//     });
-
-//     const { data } = result;
-//     console.log(data, result);
-//     const {
-//         page: { blocksJSON, seo },
-//     } = data;
-
-//     console.log(seo);
-
-//     const blocks = JSON.parse(blocksJSON);
-
-//     return {
-//         props: { blocks, seo, preview },
-//     };
-// }

@@ -13,16 +13,22 @@ const convertBlockName2ComponentName = (blockName) => {
     }).join("");
 };
 
-export default function html2React(block) {
+export default function html2React(block, payloads = {}) {
     const name = block.name
         .split('/')
         .map((name) => convertBlockName2ComponentName(name))
         .join('/');
 
-    const WrapperComponent = dynamic(() =>
-        import(`../components/Wordpress/${name}`)
-    );
+    let WrapperComponent = null;
 
+    if (Object.hasOwnProperty.call(payloads, name))
+        WrapperComponent = payloads[name];
+    else
+        WrapperComponent = dynamic(() =>
+            import(`../components/Wordpress/${name}`)
+        );
+    // const WrapperComponent = import(`../components/Wordpress/${name}`)
+    // console.log(WrapperComponent);
     // eslint-disable-next-line react/display-name
     return ({ children, key, id }) => {
         if (WrapperComponent) {
