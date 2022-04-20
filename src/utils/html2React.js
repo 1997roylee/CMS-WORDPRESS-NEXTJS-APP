@@ -1,4 +1,6 @@
 // src/utils/html2React.js
+/* eslint-disable react/prop-types */
+import React from 'react';
 import parse from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import toCSSObject from './toCssObject';
@@ -8,9 +10,12 @@ const upperFirstCase = (str) => {
 };
 
 const convertBlockName2ComponentName = (blockName) => {
-    return blockName.split('-').map((word) => {
-        return upperFirstCase(word);
-    }).join("");
+    return blockName
+        .split('-')
+        .map((word) => {
+            return upperFirstCase(word);
+        })
+        .join('');
 };
 
 export default function html2React(block, payloads = {}) {

@@ -1,5 +1,6 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { Button, Flex } from '@chakra-ui/react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { cloneElement, findChildrenByType } from '../../utils/children';
 import { IoArrowBackSharp, IoArrowForwardSharp } from 'react-icons/io5';
 
@@ -10,7 +11,7 @@ const Carousel = (props) => {
 
     const slideTo = useCallback(
         (index) => {
-            console.log(index);
+            // console.log(index);
             if (index < 0) {
                 setCurrentIndex(slides.length - 1);
             } else if (index > slides.length - 1) {
@@ -22,7 +23,6 @@ const Carousel = (props) => {
         [slides.length]
     );
 
-    
     useEffect(() => {
         const handler = setInterval(() => {
             slideTo(currentIndex + 1);
@@ -45,7 +45,6 @@ const Carousel = (props) => {
             })
         );
 
-    
     const handleSlideToPrev = () => {
         slideTo(currentIndex - 1);
     };
@@ -59,7 +58,6 @@ const Carousel = (props) => {
             w="100%"
             flexWrap={'nowrap'}
             position="relative"
-           
             style={{
                 marginLeft: '-24px',
                 marginRight: '-24px',
@@ -68,7 +66,6 @@ const Carousel = (props) => {
             <Flex
                 w="100%"
                 flexWrap={'nowrap'}
-                
                 style={{
                     // marginLeft: '-24px',
                     // marginRight: '-24px',
@@ -97,7 +94,7 @@ const Carousel = (props) => {
                         '0 2.75px 2.21px rgb(0 0 0 / 7%), 0 6.65px 5.32px rgb(0 0 0 / 4%), 0 12.5px 10px rgb(0 0 0 / 3%), 0 22px 18px rgb(0 0 0 / 3%), 0 42px 33.4px rgb(0 0 0 / 2%), 0 100px 80px rgb(0 0 0 / 2%) !important'
                     }
                 >
-                    <IoArrowBackSharp/>
+                    <IoArrowBackSharp />
                 </Button>
                 <Button
                     bg="#fff"
@@ -109,7 +106,7 @@ const Carousel = (props) => {
                         '0 2.75px 2.21px rgb(0 0 0 / 7%), 0 6.65px 5.32px rgb(0 0 0 / 4%), 0 12.5px 10px rgb(0 0 0 / 3%), 0 22px 18px rgb(0 0 0 / 3%), 0 42px 33.4px rgb(0 0 0 / 2%), 0 100px 80px rgb(0 0 0 / 2%) !important'
                     }
                 >
-                    <IoArrowForwardSharp/>
+                    <IoArrowForwardSharp />
                 </Button>
             </Flex>
         </Flex>

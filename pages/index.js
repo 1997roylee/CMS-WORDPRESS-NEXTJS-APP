@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Layout from '../components/layout';
 import client from '../src/apollo/client';
 import { GET_PAGE } from '../src/queries/pages/get-page';
@@ -23,7 +25,7 @@ export async function getServerSideProps({ req, res, preview = false }) {
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=10, stale-while-revalidate=59'
-    )
+    );
     const result = await client.query({
         query: GET_PAGE,
         variables: {

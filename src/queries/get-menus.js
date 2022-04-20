@@ -1,5 +1,5 @@
-import { gql } from "@apollo/client";
-import MenuFragment from "./fragments/menus";
+import { gql } from '@apollo/client';
+import MenuFragment from './fragments/menus';
 
 export const HeaderFooter = `
   header: getHeader {
@@ -38,11 +38,11 @@ export const HeaderFooter = `
       iconUrl
     }
   }
-`
+`;
 
 export const GET_MENUS = gql`
 query GET_MENUS {
   ${HeaderFooter}
 }
   ${MenuFragment}
-`
+`;
