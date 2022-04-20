@@ -1,9 +1,21 @@
-export { default as CustomerStories } from './CustomerStories';
-export { default as Sales } from './Sales';
-export { default as CustomerStoryItem } from './CustomerStoryItem';
-export { default as Hero } from './Hero';
-export { default as HeroImage } from './HeroImage';
-export { default as WhatWeSay } from './WhatWeSay';
-export { default as Editor } from './Editor';
-export { default as Features } from './Features';
-export { default as FeatureItem } from './FeatureItem';
+import CustomerStories from './CustomerStories';
+import Sales from './Sales';
+import Hero from './Hero';
+import HeroImage from './HeroImage';
+import WhatWeSay from './WhatWeSay';
+import Features from './Features';
+import FeatureItem from './FeatureItem';
+import Editor from './Editor';
+import CustomerStoryItem from './CustomerStoryItem';
+
+export {
+    CustomerStories,
+    Sales,
+    Hero,
+    HeroImage,
+    WhatWeSay,
+    Features,
+    FeatureItem,
+    Editor,
+    CustomerStoryItem,
+}
