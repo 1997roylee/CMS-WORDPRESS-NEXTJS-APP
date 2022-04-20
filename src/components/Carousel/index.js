@@ -1,7 +1,4 @@
-import Carousel from "./Carousel";
-import CarouselSlide from "./CarouselSlide";
+import Carousel from './Carousel';
+import CarouselSlide from './CarouselSlide';
 
-export {
-    Carousel,
-    CarouselSlide
-}
+export { Carousel, CarouselSlide };

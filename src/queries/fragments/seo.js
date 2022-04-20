@@ -24,6 +24,6 @@ fragment SeoFragment on PostTypeSEO {
         sourceUrl
       }
 }
-`
+`;
 
-export default SeoFragment
+export default SeoFragment;

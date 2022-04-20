@@ -7,10 +7,9 @@ export default function toCSSObject(attributes = {}) {
         backgroundType,
         align,
         fontWeight,
-
     } = attributes;
 
     return {
         backgroundColor: customBackgroundColor,
-    }
+    };
 }
