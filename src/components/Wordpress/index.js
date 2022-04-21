@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { Hero, HeroImage  } from './Lazyblock';
+import { Hero, HeroImage, Sales, WhatWeSay, Features, FeatureItem } from './Lazyblock';
 
 const dynamicLoad = (module, name) => {
     return dynamic(module.then((module) => module[name]));
@@ -8,20 +8,16 @@ const dynamicLoad = (module, name) => {
 
 export const preloadLazyBlockComponents = () => {
     return {
-        
-        'Lazyblock/Sales': dynamicLoad(import('./Lazyblock'), 'Sales'),
+        'Lazyblock/Sales': Sales,
         'Lazyblock/Hero': Hero,
+        'Lazyblock/HeroImage': HeroImage,
+        'Lazyblock/WhatWeSay': WhatWeSay,
+        'Lazyblock/Editor': dynamicLoad(import('./Lazyblock'), 'Editor'),
         'Lazyblock/CustomerStoryItem': dynamicLoad(
             import('./Lazyblock'),
             'CustomerStoryItem'
         ),
-        'Lazyblock/HeroImage': HeroImage,
-        'Lazyblock/WhatWeSay': dynamicLoad(import('./Lazyblock'), 'WhatWeSay'),
-        'Lazyblock/Editor': dynamicLoad(import('./Lazyblock'), 'Editor'),
-        'Lazyblock/Features': dynamicLoad(import('./Lazyblock'), 'Features'),
-        'Lazyblock/FeatureItem': dynamicLoad(
-            import('./Lazyblock'),
-            'FeatureItem'
-        ),
+        'Lazyblock/Features': Features,
+        'Lazyblock/FeatureItem': FeatureItem
     };
 };
