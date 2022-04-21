@@ -6,6 +6,7 @@ import { IoArrowBackSharp, IoArrowForwardSharp } from 'react-icons/io5';
 
 const Carousel = (props) => {
     const { children } = props;
+    console.log(children);
     const slides = findChildrenByType('CarouselSlide', children);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -37,13 +38,13 @@ const Carousel = (props) => {
         [currentIndex]
     );
 
-    const Slides = () =>
-        slides.map((slide, index) =>
-            cloneElement(slide, {
-                key: `Slide_${index}`,
-                isActive: index === currentIndex,
-            })
-        );
+    // const Slides = () =>
+    //     slides.map((slide, index) =>
+    //         cloneElement(slide, {
+    //             key: `Slide_${index}`,
+    //             isActive: index === currentIndex,
+    //         })
+    //     );
 
     const handleSlideToPrev = () => {
         slideTo(currentIndex - 1);
@@ -73,7 +74,14 @@ const Carousel = (props) => {
                     transition: 'transform .4s ease',
                 }}
             >
-                <Slides />
+                {
+                    slides.map((slide, index) =>
+                        cloneElement(slide, {
+                            key: `Slide_${index}`,
+                            isActive: index === currentIndex,
+                        })
+                    )
+                }
             </Flex>
             <Flex
                 px={4}

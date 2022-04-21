@@ -9,7 +9,13 @@ const CustomerStories = (props) => {
 
     const columns = findOneChildByType('Core/Columns', children);
     const columnList = React.Children.toArray(columns.props.children);
-    console.log(children, columns, columnList);
+    // console.log(children, columns, columnList);
+    console.log(columnList.map((column, index) => (
+        // eslint-disable-next-line react/jsx-key
+        <CarouselSlide key={`CarouselSlide_${index}`}>
+            {column}
+        </CarouselSlide>
+    )))
     return (
         <Container
             size="lg"

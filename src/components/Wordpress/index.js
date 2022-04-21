@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import { Hero, HeroImage, Sales, WhatWeSay, Features, FeatureItem } from './Lazyblock';
+import { Hero, HeroImage, Sales, WhatWeSay, Features } from './Lazyblock';
 
 const dynamicLoad = (module, name) => {
-    return dynamic(module.then((module) => module[name]));
+    return dynamic(module.then((module) => module[name]), { ssr: true });
 };
 
 
@@ -18,6 +18,6 @@ export const preloadLazyBlockComponents = () => {
             'CustomerStoryItem'
         ),
         'Lazyblock/Features': Features,
-        'Lazyblock/FeatureItem': FeatureItem
+        'Lazyblock/FeatureItem': dynamicLoad(import('./Lazyblock'), 'FeatureItem')
     };
 };

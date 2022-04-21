@@ -12,23 +12,19 @@ const cache = createEmotionCache();
 
 // import ExecutionEnvironment from 'exenv';
 function MyApp({ Component, pageProps }) {
-    return (
-        <CacheProvider value={cache}>
-            <ChakraProvider
-                // cssVarsRoot={
-                //     ExecutionEnvironment.canUseDOM &&
-                //     ExecutionEnvironment.canUseViewport
-                //         ? null
-                //         : ''
-                // }
-                theme={theme}
-            >
-                <ApolloProvider client={client}>
-                    <Component {...pageProps} />
-                </ApolloProvider>
-            </ChakraProvider>
-        </CacheProvider>
-    );
+  return (
+
+    <ChakraProvider
+      theme={theme}
+    >
+      <CacheProvider value={cache}>
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      </CacheProvider>
+    </ChakraProvider>
+
+  );
 }
 
 export default MyApp;

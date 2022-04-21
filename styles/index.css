@@ -2,7 +2,7 @@
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 700;
-    font-display: swap;
+    font-display: optional;
     src: url('/assets/fonts/PlusJakartaSans-Bold.woff2') format('woff2'),
         url('/assets/fonts/PlusJakartaSans-Bold.woff') format('woff');
 }
@@ -11,7 +11,7 @@
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 400;
-    font-display: swap;
+    font-display: optional;
     src: url('/assets/fonts/PlusJakartaSans-Regular.woff2') format('woff2'),
         url('/assets/fonts/PlusJakartaSans-Regular.woff') format('woff');
 }
@@ -20,7 +20,7 @@
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 300;
-    font-display: swap;
+    font-display: optional;
     src: url('/assets/fonts/PlusJakartaSans-Light.woff2') format('woff2'),
         url('/assets/fonts/PlusJakartaSans-Light.woff') format('woff');
 }
@@ -29,7 +29,7 @@
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     font-weight: 500;
-    font-display: swap;
+    font-display: optional;
     src: url('/assets/fonts/PlusJakartaSans-Bold.woff2') format('woff2'),
         url('/assets/fonts/PlusJakartaSans-Bold.woff') format('woff');
 }
